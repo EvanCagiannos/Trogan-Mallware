@@ -1,4 +1,4 @@
-name: HTML Workflow
+name: HTML Workflow with Super-Linter
 
 on:
   push:
@@ -14,16 +14,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14.x'
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Lint HTML files
-      run: npx htmlhint .
+    - name: Run Super-Linter
+      uses: github/super-linter@v4
+      env:
+        VALIDATE_ALL_CODEBASE: true
+        DEFAULT_BRANCH: main
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Optional: specify specific linters to run
+        # Example: HTML, CSS, JavaScript, TypeScript
+        # VALIDATE_LANGUAGES: html,css,javascript,typescript
 
     - name: Deploy to hosting
       uses: peaceiris/actions-gh-pages@v3
