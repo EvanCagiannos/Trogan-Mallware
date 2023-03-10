@@ -1,5 +1,5 @@
 /* Created by: Evan Cagiannos
-   Created on: May 2022
+   Created on: March 9th 2023
    This file contains the JS functions for index.html*/
 
    'use strict'
